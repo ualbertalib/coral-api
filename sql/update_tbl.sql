@@ -28,5 +28,8 @@
 
 -- select count(documentID), sfxID from Link group by sfxID having count(documentID) > 1
 -- select * from XloadLink where sfxID = 10
+-- call NotInCoral()
 
 
+call GetRights("ADAM_MATTHEW_THE_GRAND_TOUR", "SFX")
+-- select * from Expression where documentID = 26 and expressionTypeID in (13, 3, 18, 14);

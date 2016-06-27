@@ -1,0 +1,17 @@
+# general
+*.log
+
+# emacs by-products
+*~
+
+# git mergetool byproducts
+*.orig
+
+# emacs backup files
+*~
+
+# vi backup files
+*.swp
+
+# MySQL db login info
+credentials.php
