@@ -15,3 +15,6 @@
 
 # MySQL db login info
 credentials.php
+
+# mac files
+.DS_Store
