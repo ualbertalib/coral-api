@@ -40,7 +40,13 @@ call GetMissingXLinks();
 
 select * from XloadLink where ourID is null and OURLink != "";
 
-select * from OURlicdata where LicdataID  not in (select ourID from XloadLink);
+select * from OURlicdata where LicdataID  not in (select distinct ourID from XloadLink where ourID is not null);
+update OURlicdata set LinkID = (select max(linkID) from XloadLink where ourID = OURlicdata.LicdataID);
+select * from OURlicdata where LinkID is null;
+select * from XloadLink where ourID = 1130;
+
+select distinct ourID from XloadLink order by 1;
+
 
 
 call GetRights("CRKN_SPRINGER_LINK_CURRENT", "SFX");
