@@ -24,8 +24,8 @@ BEGIN
   -- try to cross resrence  SFXTarget to Coral db document id
 
   if targetType = "SFX" THEN
-    select documentID into v_documentId from XloadLink where SFXTarget = target;
-    select OURLink into v_ourLink from XloadLink where SFXTarget = target;
+    select distinct documentID into v_documentId from XloadLink where SFXTarget = target AND documentId is NOT NULL;
+    select max(OURLink) into v_ourLink from XloadLink where SFXTarget = target AND documentId = v_documentId;
   ELSE
     select documentID into v_documentId from XloadLink where coralName = target;
     select OURLink into v_ourLink from XloadLink where coralName = target;

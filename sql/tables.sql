@@ -12,7 +12,7 @@ CREATE TABLE `XloadLink` (
   `OURTitle`      varchar(256) DEFAULT NULL,
   `OURLink`       varchar(256) DEFAULT NULL,
   `ourID`         int(10) unsigned  NULL,
-    PRIMARY KEY (`LinkID`)
+    PRIMARY KEY (`linkID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
 drop table if exists coral_licensing_prod.OUR;
@@ -36,10 +36,35 @@ CREATE TABLE `SFX` (
 drop table if exists coral_licensing_prod.Link;
 
 CREATE TABLE `Link` (
-  `linkID`        int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `LinkID`        int(10) unsigned NOT NULL AUTO_INCREMENT,
   `documentID`    int(10) unsigned  NULL,
   `sfxID`         int(10) unsigned  NULL,
   `ourID`         int(10) unsigned  NULL,
     PRIMARY KEY (`LinkID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
+
+drop table if exists coral_licensing_prod.OURlicdata;
+
+CREATE TABLE OURlicdata(
+  LicdataID int(10) unsigned NOT NULL AUTO_INCREMENT,
+  LinkID    int(10) unsigned  NULL,
+  Active    varchar(3) DEFAULT NULL,
+  Title	    varchar(256) DEFAULT NULL,
+  Vendor    varchar(256) DEFAULT NULL,
+  Consortium varchar(32) DEFAULT NULL,
+  EReserves char(3) DEFAULT NULL,
+  CoursePack 	char(3) DEFAULT NULL,
+  DurableURL	char(3) DEFAULT NULL,
+  AlumniAccess char(3) DEFAULT NULL,
+  PerpetualAccess char(3) DEFAULT NULL,
+  Password char(3) DEFAULT NULL,
+  ILLPrint char(3) DEFAULT NULL,
+  ILLElectronic char(3) DEFAULT NULL,
+  ILLAriel char(3) DEFAULT NULL,
+  WalkIn char(3) DEFAULT NULL,
+  URL varchar(256) DEFAULT NULL,
+  TextMining char(3) DEFAULT NULL,
+  LocalLoading char(3) DEFAULT NULL,
+  PRIMARY KEY (LicdataID)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1;

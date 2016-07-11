@@ -31,5 +31,32 @@
 -- call NotInCoral()
 
 
-call GetRights("ADAM_MATTHEW_THE_GRAND_TOUR", "SFX")
+-- call GetRights("ADAM_MATTHEW_THE_GRAND_TOUR", "SFX")
 -- select * from Expression where documentID = 26 and expressionTypeID in (13, 3, 18, 14);
+call GetXLinks()
+call GetDuplicateXLinks();
+
+call GetMissingXLinks();
+
+select * from XloadLink where ourID is null and OURLink != "";
+
+select * from OURlicdata where LicdataID  not in (select ourID from XloadLink);
+
+
+call GetRights("CRKN_SPRINGER_LINK_CURRENT", "SFX");
+
+select * from XloadLink where SFXTarget = "Adam _Mathew";
+
+select * from XloadLink where SFXTarget = "JSTOR_BUSINESS_III_COLLECTION";
+
+select * from XloadLink where SFXTarget = "CRKN_SPRINGER_LINK_CURRENT"  AND documentId = 585;
+
+select SFXTarget from XloadLink where SFXTarget != "" group by SFXTarget having count(SFXTarget) > 1
+
+update XloadLink set documentID = (select documentID from Document where shortName = '1ABC-CLIO') where XloadLink.linkID = 10;
+
+delete from OURlicdata;
+
+select LicdataID from OURlicdata where URL = 'http://tal.scholarsportal.info/alberta/ABCCLIO_History_Reference'
+
+                                              https://tal.scholarsportal.info/alberta/ABCCLIO_History_Reference
