@@ -5,7 +5,7 @@
 	#this is the info for your database connection
     ####################################################################################
     ##
-    include ('../credentials.php');
+   include ('../credentials.php');
 
 	##
 	$LOCAL_JS    = FALSE; // FALSE for inclusion of remote js files

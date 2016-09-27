@@ -24,7 +24,13 @@ CREATE TABLE `OUR` (
   PRIMARY KEY (`ourID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
-drop table if exists coral_licensing_prod.SFX;
+drop table if exists coral_api_prod.SFX;
+
+CREATE TABLE `SFXTag` (
+  `sfxID`        int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `SFXTag`       varchar(256) DEFAULT NULL,
+  PRIMARY KEY (`sfxID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
 CREATE TABLE `SFX` (
   `sfxID`        int(10) unsigned NOT NULL AUTO_INCREMENT,

@@ -1,0 +1,178 @@
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.7/jquery.validate.min.js"></script>
+<script type="text/javascript" src="http://ajaxcrud.com/code/jquery.maskedinput.js"></script>
+<script type="text/javascript" src="js/validation.js"></script>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<script type="text/javascript" src="js/javascript_functions.js"></script>
+<link href="css/default.css" rel="stylesheet" type="text/css" media="screen" />
+
+            <script>
+
+                ajax_file = "/coralapi/edit/showLinks.php"; 
+
+                this_page = "/coralapi/edit/showLinks.php"
+
+                loading_image_html = "<center><br /><br  /><img src=\'css/loading.gif\'><br /><br /></center>"; 
+
+
+                function validateAddForm(tableName, usePost){
+            		var validator = $('#add_form_' + tableName).validate();
+            		if (validator.form()){
+						if (!usePost){
+							setLoadingImage(tableName);
+							var fields = getFormValues(document.getElementById('add_form_' + tableName), '');
+							fields = fields + '&table=' + tableName;
+							var req = '/coralapi/edit/showLinks.php?action=add&' + fields;
+							//validator.resetForm();
+							clearForm('add_form_' + tableName);
+							sndAddReq(req, tableName);
+							return false;
+						}
+						else{
+							//post the form normally (e.g. if using file uploads)
+							$('#add_form_' + tableName).submit();
+						}
+
+                    }
+                    return false;
+                }
+
+				$(document).ready(function(){
+					$("#add_form_XloadLink").validate();
+				});
+
+            </script>
+
+			<style>
+				/* this will only work when your HTML doctype is in "strict" mode.
+					In other words - put this in your header:
+				   <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+				*/
+
+				.hand_cursor{
+					cursor: pointer; /* hand-shaped cursor */
+					cursor: hand; /* for IE 5.x */
+				}
+
+				.editable:hover, p.editable:hover{
+					background-color: #FFFF99;
+				}
+			</style>
+<a name='ajaxCRUD1' id='ajaxCRUD1'></a>
+<form id="XloadLink_filter_form" class="ajaxCRUD">
+<table cellspacing='5' align='center'><tr><thead><th><b>Found in Coral</b>:<input type="text" class="" size="10" name="documentID" value="" onKeyUp="filterTable(this, 'XloadLink', 'documentID', '');">&nbsp;&nbsp;</th><th><b>Coral Name</b>:<input type="text" class="" size="10" name="coralName" value="" onKeyUp="filterTable(this, 'XloadLink', 'coralName', '');">&nbsp;&nbsp;</th><th><b>SFX Tag</b>:<input type="text" class="" size="10" name="SFXTarget" value="" onKeyUp="filterTable(this, 'XloadLink', 'SFXTarget', '');">&nbsp;&nbsp;</th><th><b>SFX Public Name</b>:<input type="text" class="" size="10" name="SFXPublicName" value="" onKeyUp="filterTable(this, 'XloadLink', 'SFXPublicName', '');">&nbsp;&nbsp;</th><th><b>OUR Title</b>:<input type="text" class="" size="10" name="OURTitle" value="" onKeyUp="filterTable(this, 'XloadLink', 'OURTitle', '');">&nbsp;&nbsp;</th><th><b>OUR Link</b>:<input type="text" class="" size="10" name="OURLink" value="" onKeyUp="filterTable(this, 'XloadLink', 'OURLink', '');">&nbsp;&nbsp;</th></tr></thead></table>
+</form>
+<div id='XloadLink'>
+<table align='center' class='ajaxCRUD' name='table_XloadLink' id='table_XloadLink' cellspacing='' border=0>
+<thead><tr>
+<th><a href='javascript:;' onClick="changeSort('XloadLink', 'documentID', 'desc');" >Found in Coral</a></th><th><a href='javascript:;' onClick="changeSort('XloadLink', 'coralName', 'desc');" >Coral Name</a></th><th><a href='javascript:;' onClick="changeSort('XloadLink', 'SFXTarget', 'desc');" >SFX Tag</a></th><th><a href='javascript:;' onClick="changeSort('XloadLink', 'SFXPublicName', 'desc');" >SFX Public Name</a></th><th><a href='javascript:;' onClick="changeSort('XloadLink', 'OURTitle', 'desc');" >OUR Title</a></th><th><a href='javascript:;' onClick="changeSort('XloadLink', 'OURLink', 'desc');" >OUR Link</a></th></tr></thead>
+<tr class='odd' id="XloadLink_row_1" valign='middle'>
+<td><div style='color:red'>No</div></td><td>[SFX Service Target - No Coral match required)</td><td>DOI</td><td>DOI</td><td></td><td></td></tr><tr class='cell_row' id="XloadLink_row_2" valign='middle'>
+<td><div style='color:red'>No</div></td><td>[SFX Service Target - No Coral match required)</td><td>LOCAL_CATALOGUE_SIRSI_UNICORN</td><td>the Library Catalogue</td><td></td><td></td></tr><tr class='odd' id="XloadLink_row_3" valign='middle'>
+<td><div style='color:red'>No</div></td><td>[SFX Service Target - No Coral match required)</td><td>MESSAGE_CURRENT_ACCESS_LCL</td><td><span class='nofulltext'>No full text is available because of a publisher's <a href='http://www.library.ualberta.ca/getit/faq/#Embargo'>embargo</a> on electronic access to older issues</span></td><td></td><td></td></tr><tr class='cell_row' id="XloadLink_row_4" valign='middle'>
+<td><div style='color:red'>No</div></td><td>[SFX Service Target - No Coral match required)</td><td>MESSAGE_EMBARGO_PAB_LCL</td><td><span class='nofulltext'>Note that recently-published articles may be <a href='http://www.library.ualberta.ca/getit/faq/#Embargo'>embargoed</a></span></td><td></td><td></td></tr><tr class='odd' id="XloadLink_row_5" valign='middle'>
+<td><div style='color:red'>No</div></td><td>[SFX Service Target - No Coral match required)</td><td>MESSAGE_EMBARGO2_PAB_LCL</td><td><span class='nofulltext'>No full text is available because of a publisher's <a href='http://www.library.ualberta.ca/getit/faq/#Embargo'>embargo</a> on electronic access to new issues</span></td><td></td><td></td></tr><tr class='cell_row' id="XloadLink_row_6" valign='middle'>
+<td><div style='color:red'>No</div></td><td>[SFX Service Target - No Coral match required)</td><td>MESSAGE_NO_DOCDEL_LCL</td><td><span class='nofulltext'>Please use the full text or catalogue links.</span></td><td></td><td></td></tr><tr class='odd' id="XloadLink_row_7" valign='middle'>
+<td><div style='color:red'>No</div></td><td>[SFX Service Target - No Coral match required)</td><td>MESSAGE_NO_FULLTXT</td><td><span class='nofulltext'>Online full text is not available for this item.</span></td><td></td><td></td></tr><tr class='cell_row' id="XloadLink_row_8" valign='middle'>
+<td><div style='color:red'>No</div></td><td>[SFX Service Target - No Coral match required)</td><td>DOCDEL_CISTI</td><td>CISTI</td><td></td><td></td></tr><tr class='odd' id="XloadLink_row_9" valign='middle'>
+<td><div style='color:red'>No</div></td><td>[SFX Service Target - No Coral match required)</td><td>DOCDEL_RELAIS</td><td>RELAIS_DDL</td><td></td><td></td></tr><tr class='cell_row' id="XloadLink_row_10" valign='middle'>
+<td>Yes</td><td>19th Century Masterfile</td><td></td><td></td><td></td><td></td></tr><tr class='odd' id="XloadLink_row_12" valign='middle'>
+<td>Yes</td><td>ABC-CLIO</td><td>ABC_CLIO_HISTORY_REFERENCE_ONLINE_COMPLETE</td><td>ABC-CLIO History Reference Online Complete</td><td>ABC-CLIO History Reference</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=ABCCLIO_History_Reference&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='cell_row' id="XloadLink_row_13" valign='middle'>
+<td><div style='color:red'>No</div></td><td>Academic Rights Press (Academic Charts Online)</td><td></td><td></td><td></td><td></td></tr><tr class='odd' id="XloadLink_row_14" valign='middle'>
+<td><div style='color:red'>No</div></td><td>Access Engineering (UofA)</td><td>MCGRAW_HILL_ACCESS_ENGINEERING</td><td>McGraw-Hill's AccessEngineering</td><td>Access Engineering</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Access_Engineering&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='cell_row' id="XloadLink_row_15" valign='middle'>
+<td>Yes</td><td>ACLS History E-Book Project</td><td>ACLS_HUMANITIES_EBOOK</td><td>ACLS Humanities eBook</td><td>ACLS Humanities eBook</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=ACLS_Humanities_eBook&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='odd' id="XloadLink_row_16" valign='middle'>
+<td>Yes</td><td>ACM Digital Library</td><td>ACM_DIGITAL_LIBRARY</td><td>ACM Digital Library</td><td>ACM Digital Library</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=ACM_Digital_Library&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='cell_row' id="XloadLink_row_17" valign='middle'>
+<td><div style='color:red'>No</div></td><td>Acsess (Alliance of Crop, Soil, and Environmental Science Societies)</td><td></td><td></td><td></td><td></td></tr><tr class='odd' id="XloadLink_row_18" valign='middle'>
+<td>Yes</td><td>Adam Mathew Publications</td><td>ADAM_MATTHEW_DIGITAL_EIGHTEENTH_CENTURY_JOURNALS_3</td><td>Digital Eighteenth Century Journals 3</td><td>Adam Matthew [UofA]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=adam_mathew&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='cell_row' id="XloadLink_row_19" valign='middle'>
+<td>Yes</td><td>Adam Mathew Publications</td><td>ADAM_MATTHEW_DIGITAL_EIGHTEENTH_CENTURY_JOURNALS_4</td><td>Digital Eighteenth Century Journals 4</td><td>Adam Matthew [UofA]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=adam_mathew&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='odd' id="XloadLink_row_20" valign='middle'>
+<td>Yes</td><td>Adam Mathew Publications</td><td>ADAM_MATTHEW_DIGITAL_EIGHTEENTH_CENTURY_JOURNALS_5</td><td>Digital Eighteenth Century Journals 5</td><td>Adam Matthew [UofA]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=adam_mathew&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='cell_row' id="XloadLink_row_21" valign='middle'>
+<td>Yes</td><td>Adam Mathew Publications</td><td>ADAM_MATTHEW_DIGITAL_EVERYDAY_LIFE_AND_WOMEN_IN_AMERICA</td><td>Everyday Life and Women in America, c.1800-1920</td><td>Adam Matthew [UofA]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=adam_mathew&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='odd' id="XloadLink_row_22" valign='middle'>
+<td>Yes</td><td>Adam Mathew Publications</td><td>ADAM_MATTHEW_DIGITAL_LONDON_LOW_LIFE</td><td>Adam Matthew London Low Life</td><td>Adam Matthew [UofA]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=adam_mathew&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='cell_row' id="XloadLink_row_23" valign='middle'>
+<td>Yes</td><td>Adam Mathew Publications</td><td>ADAM_MATTHEW_DIGITAL_VICTORIAN_POPULAR_CULTURE</td><td>Victorian Popular Culture</td><td>Adam Matthew [UofA]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=adam_mathew&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='odd' id="XloadLink_row_24" valign='middle'>
+<td>Yes</td><td>Adam Mathew Publications</td><td>ADAM_MATTHEW_MEDIEVAL_FAMILY_LIFE</td><td>Medieval Family Life</td><td>Adam Matthew [UofA]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=adam_mathew&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='cell_row' id="XloadLink_row_25" valign='middle'>
+<td>Yes</td><td>Adam Mathew Publications</td><td>ADAM_MATTHEW_THE_GRAND_TOUR</td><td>The Grand Tour</td><td>Adam Matthew [UofA]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=adam_mathew&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='odd' id="XloadLink_row_26" valign='middle'>
+<td>Yes</td><td>Adam Mathew Publications (CRKN)</td><td>ADAM_MATTHEW_DIGITAL_CHINA</td><td>China: Trade, Politics and Culture, 1793-1980</td><td>Adam Matthew Digital [CRKN]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Adam_Matthew_Digital&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='cell_row' id="XloadLink_row_27" valign='middle'>
+<td>Yes</td><td>Adam Mathew Publications (CRKN)</td><td>ADAM_MATTHEW_DIGITAL_DEFINING_GENDER</td><td>Defining Gender, 1450-1910</td><td>Adam Matthew Digital [CRKN]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Adam_Matthew_Digital&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='odd' id="XloadLink_row_28" valign='middle'>
+<td>Yes</td><td>Adam Mathew Publications (CRKN)</td><td>ADAM_MATTHEW_DIGITAL_EIGHTEENTH_CENTURY_JOURNALS_1</td><td>Digital Eighteenth Century Journals 1</td><td>Adam Matthew Digital [CRKN]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Adam_Matthew_Digital&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='cell_row' id="XloadLink_row_29" valign='middle'>
+<td>Yes</td><td>Adam Mathew Publications (CRKN)</td><td>ADAM_MATTHEW_DIGITAL_EIGHTEENTH_CENTURY_JOURNALS_2</td><td>Digital Eighteenth Century Journals 2</td><td>Adam Matthew Digital [CRKN]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Adam_Matthew_Digital&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='odd' id="XloadLink_row_30" valign='middle'>
+<td>Yes</td><td>Adam Mathew Publications (CRKN)</td><td>ADAM_MATTHEW_DIGITAL_EMPIRE_ONLINE</td><td>Empire Online</td><td>Adam Matthew Digital [CRKN]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Adam_Matthew_Digital&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='cell_row' id="XloadLink_row_31" valign='middle'>
+<td>Yes</td><td>Adam Mathew Publications (CRKN)</td><td>ADAM_MATTHEW_DIGITAL_MEDIEVAL_TRAVEL_WRITING</td><td>Medieval Travel Writing</td><td>Adam Matthew Digital [CRKN]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Adam_Matthew_Digital&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='odd' id="XloadLink_row_32" valign='middle'>
+<td>Yes</td><td>Adenine Press</td><td></td><td></td><td></td><td></td></tr><tr class='cell_row' id="XloadLink_row_33" valign='middle'>
+<td>Yes</td><td>ADIS Online</td><td></td><td></td><td></td><td></td></tr><tr class='odd' id="XloadLink_row_34" valign='middle'>
+<td>Yes</td><td>AgEcon Search</td><td>AGECON_FREE</td><td>AgEcon</td><td>AgEcon</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=AgEcon&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='cell_row' id="XloadLink_row_35" valign='middle'>
+<td>Yes</td><td>AGIS Plus Text</td><td>INFORMIT_AGIS_PLUS_TEXT</td><td>Informit AGIS Plus Text</td><td>Informit</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Informit&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='odd' id="XloadLink_row_36" valign='middle'>
+<td>Yes</td><td>AGIS Plus Text</td><td>INFORMIT_HSS_COLLECTION</td><td>Informit Humanities & Social Sciences Collection</td><td>Informit</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Informit&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='cell_row' id="XloadLink_row_37" valign='middle'>
+<td>Yes</td><td>Agricultural Institute of Canada</td><td></td><td></td><td></td><td></td></tr><tr class='odd' id="XloadLink_row_38" valign='middle'>
+<td>Yes</td><td>AHA (American Heart Association)</td><td>HIGHWIRE_PRESS_AMERICAN_HEART_ASSOCIATION</td><td>Highwire Press American Heart Association</td><td>American Heart Association</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=American_Heart_Association&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='cell_row' id="XloadLink_row_39" valign='middle'>
+<td>Yes</td><td>Airiti</td><td></td><td></td><td></td><td></td></tr><tr class='odd' id="XloadLink_row_40" valign='middle'>
+<td>Yes</td><td>Alacra</td><td></td><td></td><td></td><td></td></tr><tr class='cell_row' id="XloadLink_row_41" valign='middle'>
+<td><div style='color:red'>No</div></td><td>Alberta Economic Multipliers - 2007</td><td></td><td></td><td></td><td></td></tr><tr class='odd' id="XloadLink_row_42" valign='middle'>
+<td>Yes</td><td>Alexander Street Press - [Various titles] (CRKN)</td><td>ALEXANDER_STREET_PRESS_20TH_CENTURY_NORTH_AMERICAN_DRAMA</td><td>Alexander Street Press 20th Century North American Drama</td><td>Alexander Street Press Publications [CRKN]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Alexander_Street_Press_CRKN&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='cell_row' id="XloadLink_row_43" valign='middle'>
+<td>Yes</td><td>Alexander Street Press - [Various titles] (CRKN)</td><td>ALEXANDER_STREET_PRESS_AMERICAN_FILM_SCRIPTS</td><td>Alexander Street Press American Film Scripts</td><td>Alexander Street Press Publications [CRKN]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Alexander_Street_Press_CRKN&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='odd' id="XloadLink_row_44" valign='middle'>
+<td>Yes</td><td>Alexander Street Press - [Various titles] (CRKN)</td><td>ALEXANDER_STREET_PRESS_BLACK_DRAMA</td><td>Alexander Street Press Black Drama</td><td>Alexander Street Press Publications [CRKN]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Alexander_Street_Press_CRKN&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='cell_row' id="XloadLink_row_45" valign='middle'>
+<td>Yes</td><td>Alexander Street Press - [Various titles] (CRKN)</td><td>ALEXANDER_STREET_PRESS_BLACK_DRAMA_SECOND_EDITION</td><td>Alexander Street Press Black Drama Second Edition</td><td>Alexander Street Press Publications [CRKN]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Alexander_Street_Press_CRKN&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='odd' id="XloadLink_row_46" valign='middle'>
+<td>Yes</td><td>Alexander Street Press - [Various titles] (CRKN)</td><td>ALEXANDER_STREET_PRESS_BLACK_THOUGHT_AND_CULTURE</td><td>Alexander Street Press Black Thought and Culture</td><td>Alexander Street Press Publications [CRKN]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Alexander_Street_Press_CRKN&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='cell_row' id="XloadLink_row_47" valign='middle'>
+<td>Yes</td><td>Alexander Street Press - [Various titles] (CRKN)</td><td>ALEXANDER_STREET_PRESS_CLASSICAL_MUSIC_LIBRARY</td><td>Alexander Street Press Classical Music Library</td><td>Alexander Street Press Publications [CRKN]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Alexander_Street_Press_CRKN&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='odd' id="XloadLink_row_48" valign='middle'>
+<td>Yes</td><td>Alexander Street Press - [Various titles] (CRKN)</td><td>ALEXANDER_STREET_PRESS_EARLY_ENCOUNTERS_IN_NORTH_AMERICA</td><td>Alexander Street Press Early Encounters in North America</td><td>Alexander Street Press Publications [CRKN]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Alexander_Street_Press_CRKN&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='cell_row' id="XloadLink_row_49" valign='middle'>
+<td>Yes</td><td>Alexander Street Press - [Various titles] (CRKN)</td><td>ALEXANDER_STREET_PRESS_LATINO_LITERATURE</td><td>Alexander Street Press Latino Literature</td><td>Alexander Street Press Publications [CRKN]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Alexander_Street_Press_CRKN&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='odd' id="XloadLink_row_50" valign='middle'>
+<td>Yes</td><td>Alexander Street Press - [Various titles] (CRKN)</td><td>ALEXANDER_STREET_PRESS_NORTH_AMERICAN_WOMENS_DRAMA</td><td>Alexander Street Press North American Women's Drama</td><td>Alexander Street Press Publications [CRKN]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Alexander_Street_Press_CRKN&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr><tr class='cell_row' id="XloadLink_row_51" valign='middle'>
+<td>Yes</td><td>Alexander Street Press - [Various titles] (CRKN)</td><td>ALEXANDER_STREET_PRESS_SMITHSONIAN_GLOBAL_SOUND_FOR_LIBRARIES</td><td>Alexander Street Press Smithsonian Global Sound for Libraries</td><td>Alexander Street Press Publications [CRKN]</td><td>&lt;iframe src=&quot;http://tal.scholarsportal.info/alberta/sfx/?tag=Alexander_Street_Press_CRKN&quot; width=&quot;100%&quot; height=&quot;40&quot; align=&quot;middle&quot; frameborder=&quot;0&quot; scrolling=&quot;no&quot;&gt;&lt;p&gt;Your browser does not support iframes.&lt;/p&gt;&lt;/iframe&gt;</td></tr></table>
+<br /><div style='width: 800px; position: relative; left: 50%; margin-left: -400px; text-align: center;'><center> <a href="javascript:;" onClick="pageTable('&pid=1', 'XloadLink');" class="paging_links"><b>1</b></a>
+  <a href="javascript:;" onClick="pageTable('&pid=2', 'XloadLink');" class="paging_links">2</a>
+  <a href="javascript:;" onClick="pageTable('&pid=3', 'XloadLink');" class="paging_links">3</a>
+  <a href="javascript:;" onClick="pageTable('&pid=4', 'XloadLink');" class="paging_links">4</a>
+  <a href="javascript:;" onClick="pageTable('&pid=5', 'XloadLink');" class="paging_links">5</a>
+  <a href="javascript:;" onClick="pageTable('&pid=6', 'XloadLink');" class="paging_links">6</a>
+  <a href="javascript:;" onClick="pageTable('&pid=7', 'XloadLink');" class="paging_links">7</a>
+  <a href="javascript:;" onClick="pageTable('&pid=8', 'XloadLink');" class="paging_links">8</a>
+  <a href="javascript:;" onClick="pageTable('&pid=9', 'XloadLink');" class="paging_links">9</a>
+  <a href="javascript:;" onClick="pageTable('&pid=10', 'XloadLink');" class="paging_links">10</a>
+  <a href="javascript:;" onClick="pageTable('&pid=11', 'XloadLink');" class="paging_links">11</a>
+  <a href="javascript:;" onClick="pageTable('&pid=12', 'XloadLink');" class="paging_links">12</a>
+  <a href="javascript:;" onClick="pageTable('&pid=13', 'XloadLink');" class="paging_links">13</a>
+  <a href="javascript:;" onClick="pageTable('&pid=14', 'XloadLink');" class="paging_links">14</a>
+  <a href="javascript:;" onClick="pageTable('&pid=15', 'XloadLink');" class="paging_links">15</a>
+  <a href="javascript:;" onClick="pageTable('&pid=16', 'XloadLink');" class="paging_links">16</a>
+  <a href="javascript:;" onClick="pageTable('&pid=17', 'XloadLink');" class="paging_links">17</a>
+  <a href="javascript:;" onClick="pageTable('&pid=18', 'XloadLink');" class="paging_links">18</a>
+  <a href="javascript:;" onClick="pageTable('&pid=19', 'XloadLink');" class="paging_links">19</a>
+  <a href="javascript:;" onClick="pageTable('&pid=20', 'XloadLink');" class="paging_links">20</a>
+  <a href="javascript:;" onClick="pageTable('&pid=21', 'XloadLink');" class="paging_links">21</a>
+  <a href="javascript:;" onClick="pageTable('&pid=22', 'XloadLink');" class="paging_links">22</a>
+  <a href="javascript:;" onClick="pageTable('&pid=23', 'XloadLink');" class="paging_links">23</a>
+  <a href="javascript:;" onClick="pageTable('&pid=24', 'XloadLink');" class="paging_links">24</a>
+  <a href="javascript:;" onClick="pageTable('&pid=25', 'XloadLink');" class="paging_links">25</a>
+  <a href="javascript:;" onClick="pageTable('&pid=26', 'XloadLink');" class="paging_links">26</a>
+  <a href="javascript:;" onClick="pageTable('&pid=27', 'XloadLink');" class="paging_links">27</a>
+  <a href="javascript:;" onClick="pageTable('&pid=28', 'XloadLink');" class="paging_links">28</a>
+  <a href="javascript:;" onClick="pageTable('&pid=29', 'XloadLink');" class="paging_links">29</a>
+  <a href="javascript:;" onClick="pageTable('&pid=30', 'XloadLink');" class="paging_links">30</a>
+  <a href="javascript:;" onClick="pageTable('&pid=31', 'XloadLink');" class="paging_links">31</a>
+  <a href="javascript:;" onClick="pageTable('&pid=32', 'XloadLink');" class="paging_links">32</a>
+  <a href="javascript:;" onClick="pageTable('&pid=33', 'XloadLink');" class="paging_links">33</a>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" onClick="pageTable('&pid=2', 'XloadLink');" class="paging_links">>></a>
+<a href="javascript:;" onClick="pageTable('&pid=33', 'XloadLink');" class="paging_links">>>|</a>
+ </center></div><br /><br /></div><br />
+<center>
+   <input type="button" value="Add Links" class="btn editingSize" onClick="$('#add_form_XloadLink').slideDown('fast'); x = document.getElementById('add_form_XloadLink'); t = setTimeout('x.scrollIntoView(false)', 200); ">
+</center>
+<form action="/coralapi/edit/showLinks.php#ajaxCRUD" id="add_form_XloadLink" method="POST" ENCTYPE="multipart/form-data" style="display:none;">
+<br />
+<table align='center' name='form'>
+<tr>
+<tr>
+<th>Coral Name</th><td><input onKeyPress="" class="editingSize " type="text" id="coralName" name="coralName" size="" maxlength="150" value="" placeholder="" ></td></tr>
+<tr>
+<th>SFX Tag</th><td><input onKeyPress="" class="editingSize " type="text" id="SFXTarget" name="SFXTarget" size="" maxlength="150" value="" placeholder="" ></td></tr>
+<tr>
+<th>SFX Public Name</th><td><input onKeyPress="" class="editingSize " type="text" id="SFXPublicName" name="SFXPublicName" size="" maxlength="150" value="" placeholder="" ></td></tr>
+<tr>
+<th>OUR Title</th><td><input onKeyPress="" class="editingSize " type="text" id="OURTitle" name="OURTitle" size="" maxlength="150" value="" placeholder="" ></td></tr>
+<tr>
+<th>OUR Link</th><td><input onKeyPress="" class="editingSize " type="text" id="OURLink" name="OURLink" size="" maxlength="150" value="" placeholder="" ></td></tr>
+</tr><tr><td>
+<input class="editingSize" type="button" onClick="validateAddForm('XloadLink', true);" value="Save Links"></td><td><input style='float: right;' class="btn editingSize" type="button" onClick="this.form.reset();$('#add_form_XloadLink').slideUp('slow');" value="Cancel"></td></tr>
+</table>
+<input type="hidden" name="action" value="add">
+<input type="hidden" name="table" value="XloadLink">
+</form>

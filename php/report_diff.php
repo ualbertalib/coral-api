@@ -29,6 +29,7 @@ require_once("class.db.php");
 require_once('paginator.class.php');
 
 // connect to DB
+$db_connection='mysql:host=erms-dev.library.ualberta.ca;port=3306;dbname=coral_licensing_prod';
 $db = new db($db_connection, $db_user, $db_passwd);
 $db->setErrorCallbackFunction("echo");
 
@@ -98,7 +99,7 @@ $data = array();
 $showResults = array_slice($results, $startRow, $itemsPerPage);
 
 foreach($showResults as $value){
-    
+
     // retrieve rights for each SFX target
     $sfx_target = $value["SFXTarget"];
     $coralName = $value["coralName"];
@@ -108,20 +109,20 @@ foreach($showResults as $value){
 
     $rights = $db->run("call GetRights(:target, :target_type)", $bind);
     $rightsRec = $rights[0];
-    
+
     // add data to the data array
     $eClass = ($rightsRec["eClass"] == '1') ? "yes" : "no";
     $eClassClass = ($rightsRec["eClass"] == '1') ? "usage Yes" : "usage No";
-    
+
     $coursePack = ($rightsRec["CoursePack"] == '1') ? "yes" : "no";
     $coursePackClass = ($rightsRec["CoursePack"] == '1') ? "usage Yes" : "usage No";
-    
+
     $link = ($rightsRec["Link"] == '1') ? "yes" : "no";
     $linkClass = ($rightsRec["Link"] == '1') ? "usage Yes" : "usage No";
-    
+
     $print = ($rightsRec["Print"] == '1') ? "yes" : "no";
     $printClass = ($rightsRec["Print"] == '1') ? "usage Yes" : "usage No";
-    
+
     $ourLink = $rightsRec["OURLink"];
     $vars = array(
         ":eClass" => $eClass,

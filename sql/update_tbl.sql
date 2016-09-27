@@ -19,6 +19,20 @@
 -- select * from Document where Document.shortName like 'JSTOR%'
 -- insert into Link (documentID, sfxID, ourID) select documentID, sfxID, ourID from XloadLink where documentID is not null
 
+use  coral_licensing_prod;
+
+select distinct documentID from XloadLink where SFXTarget = 'AMERICAN_PHYTOPATHOLOGICAL_SOCIETY_CURRENT' AND documentId is NOT NULL;
+select expressionTypeID from ExpressionType where shortName = 'Linking';
+select expressionTypeID  from ExpressionType where shortName = 'Course Management Systems';
+select expressionTypeID  from ExpressionType where shortName = 'Course Packs';
+select expressionTypeID  from ExpressionType where shortName = 'Classroom Print Copies';
+
+    select * from Qualifier, ExpressionQualifierProfile, Expression
+       where Expression.documentID = 56 and Expression.expressionTypeID = 14
+        and ExpressionQualifierProfile.expressionID = Expression.expressionID
+        and ExpressionQualifierProfile.qualifierID = Qualifier.qualifierID;
+
+
 
 -- SELECT `Link`.`linkID`,
 --    `Link`.`documentID`,
@@ -31,7 +45,7 @@
 -- call NotInCoral()
 
 
--- call GetRights("ADAM_MATTHEW_THE_GRAND_TOUR", "SFX")
+call GetRights("HIGHWIRE_PRESS_AMERICAN_DENTAL_EDUCATION_ASSOCIATION", "SFX")
 -- select * from Expression where documentID = 26 and expressionTypeID in (13, 3, 18, 14);
 call GetXLinks()
 call GetDuplicateXLinks();
@@ -49,7 +63,7 @@ select distinct ourID from XloadLink order by 1;
 
 
 
-call GetRights("CRKN_SPRINGER_LINK_CURRENT", "SFX");
+ q
 
 select * from XloadLink where SFXTarget = "Adam _Mathew";
 
@@ -66,3 +80,6 @@ delete from OURlicdata;
 select LicdataID from OURlicdata where URL = 'http://tal.scholarsportal.info/alberta/ABCCLIO_History_Reference'
 
                                               https://tal.scholarsportal.info/alberta/ABCCLIO_History_Reference
+
+select "GHiood" REGEXP  "^Hi|^Good" as word;
+select NULL as phrase;

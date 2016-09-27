@@ -19,12 +19,10 @@ $bind = array(":target" => $target,
 
 $results = $db->run("call GetRights(:target, :target_type)", $bind);
 
-print_r($results);
+//print_r($results);
 // print_r(array_slice($results[0], 1, 4));
 
 echo json_encode(array_slice($results[0], 0, 5));
-
-// print_r(results);
 
 ?>
 

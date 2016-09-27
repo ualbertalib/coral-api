@@ -6,6 +6,7 @@
  * Time: 4:21 PM
  */
 # db login info
+$MYSQL_DB    = "coral_licensing_prod";
 require_once('preheader.php');
 
 # the code for the class

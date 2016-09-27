@@ -3,17 +3,9 @@
 <head>
     <link rel="stylesheet" href="report.css" type="text/css" />
     <link rel="stylesheet" href="errors.css" type="text/css" />
-    <title>Cross link between Coral SFX and OUR </title>
+    <title>SFX Tags linked to more then one Coral Name - should be empty </title>
 </head>
 <body>
-
-<?php
-function getURL($text)
-{
-    preg_match_all('!https?://\S+!', $text, $matches);
-    return $matches[0];
-}
-?>
 
 <?php
 /**
@@ -37,39 +29,26 @@ require_once("class.db.php");
 require_once('paginator.class.php');
 
 // connect to DB
-$db_connection='mysql:host=erms-dev.library.ualberta.ca;port=3306;dbname=coral_licensing_prod';
+$db_connection='mysql:host=erms-dev.library.ualberta.ca;port=3306;dbname=coral_api_prod';
 $db = new db($db_connection, $db_user, $db_passwd);
 $db->setErrorCallbackFunction("echo");
 
 // retrieve all SFX targets and corresponding Coral names
-$results = $db->run("call GetXLinks()");
+$results = $db->run("call GetMissedTags()");
 
 // set up table header to display results
-$headers = array("Coral Name", "Found in Coral",  "SFX Tag", "OUR Rights");
-$ourLink = <<<OUR
-<a href=":ourLink" target="_new">OUR Rights Availabe Click to View </a>
-OUR;
-
+$headers = array("SFX Tag");
 $data = array();
 
 foreach($results as $value){
-    $coralName = $value["coralName"];
-    $sfxTag = $value["SFXTarget"];
-    $foundId = $value["documentID"];
-    $ourRights = $value["OURLink"];
-    $found = ($value["documentID"] != "") ? "Yes" : "No";
-    $vars = array(":ourLink" => getURL($ourRights)[0]);
-    $l = ($ourRights == "") ? "" : strtr($ourLink, $vars);
-    $data[] = array($coralName, $found, $sfxTag, $l);
-
-
-
+    $sfxTag = $value["SFXTag"];
+    $data[] = array($sfxTag);
 }
 
 // setup paginator
 $pages = new Paginator;
 
-$itemsPerPage = 50;
+$itemsPerPage = 30;
 $startRow = 0;
 
 $pages->items_total = count($data);
@@ -80,12 +59,13 @@ if(isset($_GET['page']))
 
 
 // show report data
-echo "<h1 class='band'>Cross link between Coral SFX and OUR</h1>";
+echo "<h1 class='band'>SFX tags linked to more then one Coral record<br>";
+echo "This report should be empty, any record here indicated problem</h1>";
 $t = new Table(true, "tableID");
 $t->setHeaderClass("headClass");
 $t->setBodyClass("bodyClass");
 $t->setFooterClass("footClass");
-$t->setColumnsWidth(array("30%", "10%", "35%", "25%"));
+$t->setColumnsWidth(array("100%"));
 $t->showTable($headers, $data, $startRow, $itemsPerPage);
 
 //echo'<pre/>';print_r( $pages->getPaginateData($_GET['page'], count($data)) );
