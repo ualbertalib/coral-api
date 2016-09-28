@@ -7,7 +7,7 @@ general:
 machine:
   php:
     version: 7.0.4
-  host:
+  hosts:
      local.corl-api: 127.0.0.1
 
 dependencies:
@@ -16,7 +16,7 @@ dependencies:
     - sudo ln -s $PHPENV_ROOT/versions/$(phpenv global)/usr/lib/apache2/modules/libphp7.so /usr/lib/apache2/modules/libphp5.so
 
   post:
-    - cp ~/coral-api/tests/config/coral.apache2 /etc/apache2/sites-available
+    - cp ~/coral-api/tests/_envs/coral.apache2 /etc/apache2/sites-available
     - a2ensite coral.apache2
     - sudo service apache2 restart
 
@@ -26,6 +26,6 @@ dependencies:
 
   override:
     # load test data into mysql database
-    - mysql --user=root < ~/coral-api/tests/data/coral_licensing_prod.sql
-    - mysql --user=root < ~/coral-api/tests/data/coral_api_prod.sql
+    - mysql --user=root < ~/coral-api/tests/_data/coral_licensing_prod.sql
+    - mysql --user=root < ~/coral-api/tests/_data/coral_api_prod.sql
 
