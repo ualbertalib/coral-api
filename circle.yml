@@ -1,0 +1,24 @@
+general:
+  branches:
+    ignore:
+      - master
+      - develop
+
+machine:
+  services:
+    - docker
+
+dependencies:
+  pre:
+    - sudo pip install selenium
+ 
+  cache_directories:
+    # automatically cache build docker image between builds
+    - "~/docker"
+
+  override:
+    - docker info
+    - mkdir -p ~/docker
+
+    # Restore docker build image and configure Dockerfile
+    - if [[ -e ~/docker/image.tar ]]; then docker load -i ~/docker/image.tar; else  docker pull docker.io/astrilet/testmysql:coral; docker save docker.io/astrilet/testmysql:coral > ~/docker/image.tar; fi
