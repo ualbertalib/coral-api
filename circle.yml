@@ -13,16 +13,12 @@ machine:
 dependencies:
   pre:
     - sudo unlink /usr/lib/apache2/modules/libphp5.so
-    - sudo ln -s $PHPENV_ROOT/versions/$(phpenv global)/usr/lib/apache2/modules/libphp7.so /usr/lib/apache2/modules/libphp5.so
+    - sudo ln -s $PHPENV_ROOT/versions/$(phpenv global)/usr/lib/apache2/modules/libphp7.so /usr/lib/apache2/modules/
 
   post:
-    - cp ~/coral-api/tests/_envs/coral.apache2 /etc/apache2/sites-available
-    - a2ensite coral.apache2
+    - sudo cp ~/coral-api/tests/_envs/coral.apache2 /etc/apache2/sites-available
+    - sudo a2ensite coral.apache2
     - sudo service apache2 restart
-
-  cache_directories:
-    # automatically cache build docker image between builds
-    - "~/docker"
 
   override:
     # load test data into mysql database
