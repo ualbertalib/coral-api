@@ -12,13 +12,11 @@ machine:
 
 dependencies:
   pre:
-  - sudo unlink /usr/lib/apache2/modules/libphp5.so
-  - sudo ln -s $PHPENV_ROOT/versions/$(phpenv global)/usr/lib/apache2/modules/libphp7.so /usr/lib/apache2/modules/libphp5.so
 
   post:
     - sudo cp ~/coral-api/tests/_envs/coral-api.conf /etc/apache2/sites-available
-    - sudo a2ensite coral-api.conf
-    - sudo service apache2 restart
+    #- sudo a2ensite coral-api.conf
+    #- sudo service apache2 restart
 
   override:
     # load test data into mysql database
