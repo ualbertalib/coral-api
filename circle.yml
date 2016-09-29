@@ -6,7 +6,7 @@ general:
 
 machine:
   php:
-    version: 7.0.4
+    version: 5.5.36
   hosts:
      local.corl-api: 127.0.0.1
 
