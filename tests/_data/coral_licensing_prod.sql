@@ -711,7 +711,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `GetDuplicateXLinks`()
+CREATE  PROCEDURE `GetDuplicateXLinks`()
 BEGIN
 
   select documentID, coralName, SFXTarget, SFXPublicName, OURTitle, OURLink from XloadLink
@@ -734,7 +734,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `GetDyplicateXLinks`()
+CREATE  PROCEDURE `GetDyplicateXLinks`()
 BEGIN
 
   select documentID, coralName, SFXTarget, SFXPublicName, OURTitle, OURLink from XloadLink where SFXTarget in (select SFXTarget, count(SFXTarget) from XloadLink where SFXTarget != "" group by SFXTarget having count(SFXTarget) > 1);
@@ -755,7 +755,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `GetLinks`()
+CREATE  PROCEDURE `GetLinks`()
 BEGIN
 
   select coralName, SFXTarget, OURLink from XloadLink WHERE XloadLink.documentID is NOT NULL and XloadLink.OURLink != "";
@@ -776,7 +776,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `GetMissingXLinks`()
+CREATE  PROCEDURE `GetMissingXLinks`()
 BEGIN
 
   select documentID, coralName, SFXTarget, SFXPublicName, OURTitle, OURLink from XloadLink
@@ -798,7 +798,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `GetRights`(IN target varchar(256), IN targetType varchar(10))
+CREATE  PROCEDURE `GetRights`(IN target varchar(256), IN targetType varchar(10))
 BEGIN
   DECLARE v_eclassId, v_coursePackId, v_linkId, v_printId, v_documentId INT;
   declare v_eclassTxt, v_coursePackTxt, v_linkTxt, v_printTxt  VARCHAR(512);
@@ -868,7 +868,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `GetSFXTargets`()
+CREATE  PROCEDURE `GetSFXTargets`()
 BEGIN
 
   select  coralName, SFXTarget from XloadLink WHERE XloadLink.documentID is NOT NULL and XloadLink.OURLink != "" and SFXTarget != "";
@@ -889,7 +889,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `GetXLinks`()
+CREATE  PROCEDURE `GetXLinks`()
 BEGIN
 
   select linkID, documentID, coralName, SFXTarget, SFXPublicName, OURTitle, OURLink from XloadLink;
@@ -910,7 +910,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `NotInCoral`()
+CREATE  PROCEDURE `NotInCoral`()
 BEGIN
     select coralName, SFXTarget, SFXPublicName, OURTitle, OURLink from XloadLink where documentID is null;
 
@@ -930,7 +930,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `q_lic`(IN docid INT)
+CREATE  PROCEDURE `q_lic`(IN docid INT)
 BEGIN
     select * from Document, Expression where Document.documentID = Expression.documentID and  Document.documentID = docid;
 
