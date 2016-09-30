@@ -59,8 +59,7 @@ if(isset($_GET['page']))
 
 
 // show report data
-echo "<h1 class='band'>SFX tags linked to more then one Coral record<br>";
-echo "This report should be empty, any record here indicated problem</h1>";
+echo "<h1 class='band'>SFX tags not linked to any Coral record</h1>";
 $t = new Table(true, "tableID");
 $t->setHeaderClass("headClass");
 $t->setBodyClass("bodyClass");
