@@ -68,6 +68,7 @@ $tblLink->omitAddField("ourID");
 $tblLink->addAjaxFilterBoxAllFields();
 $tblLink->turnOffAjaxEditing();
 $tblLink->disallowDelete();
+$tblLink->disallowAdd();
 
 # actually show to the table
 $tblLink->showTable();

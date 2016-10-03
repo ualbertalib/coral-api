@@ -1,0 +1,40 @@
+general:
+  branches:
+    ignore:
+      - master
+      - develop
+
+machine:
+  php:
+    version: 5.5.36
+  hosts:
+     local.coral-api: 127.0.0.1
+  pre:
+    - sudo curl -LsS http://codeception.com/codecept.phar -o /usr/local/bin/codecept
+    - sudo chmod a+x /usr/local/bin/codecept
+
+dependencies:
+  pre:
+   - sudo unlink /usr/lib/apache2/modules/libphp5.so
+   - sudo ln -s $PHPENV_ROOT/versions/$(phpenv global)/usr/lib/apache2/modules/libphp5.so /usr/lib/apache2/modules/libphp5.so
+   - sudo rm /opt/circleci/php/$(phpenv global)/etc/conf.d/xdebug.ini
+   - sudo cp /home/ubuntu/coral-api/tests/_envs/php.ini $PHPENV_ROOT/versions/$(phpenv global)/etc/conf.d/
+
+
+  post:
+    - sudo cp ~/coral-api/tests/_envs/coral-api.conf /etc/apache2/sites-available
+    - sudo a2ensite coral-api.conf
+    - sudo service apache2 restart
+
+  override:
+    # load test data into mysql database
+    - mysql --user=root < ~/coral-api/tests/_data/coral_licensing_prod.sql
+    - mysql --user=root < ~/coral-api/tests/_data/coral_api_prod.sql
+    - cp ~/coral-api/tests/_envs/circleci_credentials.php ~/coral-api/php/credentials.php
+    - cp ~/coral-api/tests/_envs/acceptance.suite.yml ~/coral-api/tests
+    - cp ~/coral-api/tests/_envs/codeception.yml ~/coral-api/
+
+test:
+  override:
+    - cd ~/coral-api/ && codecept run --steps
+
