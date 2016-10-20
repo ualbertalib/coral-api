@@ -7,8 +7,7 @@ use coral_api_prod;
 -- (re)create table SFXTag
 drop table if exists coral_api_prod.SFXTag;
 
-CREATE TABLE `SFXTag` (
-  `sfxID`        int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `SFXTag` ( `sfxID`        int(10) unsigned NOT NULL AUTO_INCREMENT,
   `SFXTag`       varchar(256) DEFAULT NULL,
   PRIMARY KEY (`sfxID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
@@ -52,10 +51,13 @@ CREATE TABLE `XloadLink` (
   `linkID`        int(10) unsigned NOT NULL AUTO_INCREMENT,
   `documentID`    int(10) unsigned  NULL,
   `coralName`     varchar(256) DEFAULT NULL,
-  `SFXTag`     varchar(256) DEFAULT NULL,
   `sfxID`         int(10) unsigned  NULL,
-  `comments`         varchar(256) DEFAULT  NULL,
-    PRIMARY KEY (`linkID`)
+  `SFXTag`        varchar(256) DEFAULT NULL,
+  `SFXPublicName` varchar(256) DEFAULT NULL,
+  `OURTitle`      varchar(256) DEFAULT NULL,
+  `OURLink`       varchar(256) DEFAULT NULL,
+  `comments`      varchar(256) DEFAULT  NULL,
+   PRIMARY KEY (`linkID`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1;
 
 
