@@ -18,6 +18,9 @@
 --
 -- Temporary table structure for view `Document`
 --
+CREATE DATABASE /*!32312 IF NOT EXISTS*/ `coral_api_prod` /*!40100 DEFAULT CHARACTER SET latin1 */;
+
+USE `coral_api_prod`;
 
 DROP TABLE IF EXISTS `Document`;
 /*!50001 DROP VIEW IF EXISTS `Document`*/;
@@ -241,7 +244,7 @@ BEGIN
   select expressionTypeID INTO v_linkId       from coral_licensing_prod.ExpressionType where shortName = 'Linking';
   select expressionTypeID INTO v_printId      from coral_licensing_prod.ExpressionType where shortName = 'Classroom Print Copies';
 
-  
+
 
   select NULL into v_documentId;
   if targetType = "SFX" THEN
