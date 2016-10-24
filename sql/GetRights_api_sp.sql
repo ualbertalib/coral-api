@@ -20,7 +20,7 @@ BEGIN
   if targetType = "SFX" THEN
     select sfxID into v_sfxId from SFXTag where SFXTag = target;
     if v_sfxId is not NULL THEN
-        select documentID into v_documentId from Link where sfxID = v_sfxId;
+        select MAX(documentID) into v_documentId from Link where sfxID = v_sfxId;
     END IF;
   ELSE
     select documentID into v_documentId from coral_licensing_prod.Document where Document.shortName = target;

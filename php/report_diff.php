@@ -29,7 +29,7 @@ require_once("class.db.php");
 require_once('paginator.class.php');
 
 // connect to DB
-$db_connection=$db_connection . 'dbname=coral_licensing_prod';
+$db_connection=$db_connection . 'dbname=coral_api_prod';
 $db = new db($db_connection, $db_user, $db_passwd);
 $db->setErrorCallbackFunction("echo");
 
@@ -101,7 +101,7 @@ $showResults = array_slice($results, $startRow, $itemsPerPage);
 foreach($showResults as $value){
 
     // retrieve rights for each SFX target
-    $sfx_target = $value["SFXTarget"];
+    $sfx_target = $value["SFXTag"];
     $coralName = $value["coralName"];
 
     $bind = array(":target" => $sfx_target,
@@ -134,6 +134,10 @@ foreach($showResults as $value){
         ":print" => $print,
         ":prnClass" => $printClass
     );
+
+    $statement = "select max(OURLink) as OURLink from XloadLink where SFXTag = '$sfx_target' AND documentId is not null";
+    $res = $db->run($statement);
+    $ourLink = $res[0]["OURLink"];
 
     // $newvars = strtr($coralRights, $vars);
     $data[] = array($sfx_target, $coralName, strtr($coralRights, $vars), $ourLink);

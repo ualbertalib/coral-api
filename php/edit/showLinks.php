@@ -7,7 +7,7 @@
  */
 
 # db login info
-$MYSQL_DB    = "coral_licensing_prod";
+$MYSQL_DB    = "coral_api_prod";
 require_once('preheader.php');
 
 # the code for the class
@@ -28,7 +28,7 @@ $tblLink->omitField("ourID");
 # display headers as reasonable titles
 $tblLink->displayAs("coralName", "Coral Name");
 $tblLink->displayAs("documentID", "Found in Coral");
-$tblLink->displayAs("SFXTarget", "SFX Tag");
+$tblLink->displayAs("SFXTag", "SFX Tag");
 $tblLink->displayAs("SFXPublicName", "SFX Public Name");
 $tblLink->displayAs("OURTitle", "OUR Title");
 $tblLink->displayAs("OURLink", "OUR Link");

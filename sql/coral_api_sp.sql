@@ -10,7 +10,7 @@ BEGIN
     FROM XloadLink
    WHERE XloadLink.documentID is NOT NULL
      and XloadLink.OURLink != ""
-     and SFXTarget != "";
+     and SFXTag != "";
 
 END //
 
@@ -41,12 +41,12 @@ BEGIN
          OURTitle,
          OURLink
    FROM XloadLink
-  WHERE SFXTarget in (SELECT SFXTarget
-                        FROM XloadLink
-                       WHERE SFXTarget != ""
-                    GROUP BY SFXTarget
-                      HAVING count(SFXTarget) > 1)
-  ORDER BY SFXTarget;
+  WHERE SFXTag in (SELECT SFXTag
+                    FROM XloadLink
+                   WHERE SFXTag != ""
+                GROUP BY SFXTag
+                  HAVING count(SFXTag) > 1)
+  ORDER BY SFXTag;
 
 END //
 
