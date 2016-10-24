@@ -126,7 +126,7 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `GetDuplicateTags`()
+CREATE  PROCEDURE `GetDuplicateTags`()
 BEGIN
 
      select Document.shortName, SFXTag.SFXTag from SFXTag, Link, Document
@@ -150,7 +150,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `GetDuplicateXLinks`()
+CREATE PROCEDURE `GetDuplicateXLinks`()
 BEGIN
 
   SELECT documentID,
@@ -183,7 +183,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `GetMissedTags`()
+CREATE PROCEDURE `GetMissedTags`()
 BEGIN
 
 select SFXTag
@@ -205,7 +205,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `GetMissingXLinks`()
+CREATE PROCEDURE `GetMissingXLinks`()
 BEGIN
 
   SELECT documentID,
@@ -233,7 +233,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `GetRights`(IN target varchar(256), IN targetType varchar(10))
+CREATE PROCEDURE `GetRights`(IN target varchar(256), IN targetType varchar(10))
 BEGIN
   DECLARE v_eclassId, v_coursePackId, v_linkId, v_printId, v_documentId, v_sfxId INT;
   declare v_eclassTxt, v_coursePackTxt, v_linkTxt, v_printTxt  VARCHAR(512);
@@ -310,7 +310,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `GetSFXTargets`()
+CREATE PROCEDURE `GetSFXTargets`()
 BEGIN
 
   SELECT coralName,
@@ -336,7 +336,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `GetXLinks`()
+CREATE PROCEDURE `GetXLinks`()
 BEGIN
 
   SELECT linkID,
@@ -364,7 +364,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-CREATE DEFINER=`root`@`%` PROCEDURE `NotInCoral`()
+CREATE PROCEDURE `NotInCoral`()
 BEGIN
         SELECT coralName,
                SFXTag,
@@ -394,7 +394,7 @@ DELIMITER ;
 /*!50001 SET character_set_results     = utf8 */;
 /*!50001 SET collation_connection      = utf8_general_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
-/*!50013 DEFINER=`root`@`%` SQL SECURITY DEFINER */
+/*!50013 SQL SECURITY DEFINER */
 /*!50001 VIEW `Document` AS select `coral_licensing_prod`.`Document`.`documentID` AS `documentID`,`coral_licensing_prod`.`Document`.`shortName` AS `shortName` from `coral_licensing_prod`.`Document` */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
