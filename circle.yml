@@ -27,9 +27,11 @@ dependencies:
     - sudo service apache2 restart
 
   override:
-    # load test data into mysql database
+    # load test data into mysql database and update all stored procedures
     - mysql --user=root < ~/coral-api/tests/_data/coral_licensing_prod.sql
     - mysql --user=root < ~/coral-api/tests/_data/coral_api_prod.sql
+    - for x in $(ls *_sp.sql); do mysql --user=root < $x; done;
+
     - cp ~/coral-api/tests/_envs/circleci_credentials.php ~/coral-api/php/credentials.php
     - cp ~/coral-api/tests/_envs/acceptance.suite.yml ~/coral-api/tests
     - cp ~/coral-api/tests/_envs/codeception.yml ~/coral-api/

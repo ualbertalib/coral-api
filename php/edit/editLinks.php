@@ -37,7 +37,7 @@ function doMyLogicForAdding($array)
     echo "<script type='text/javascript'>alert('added successfully!')</script>";
 }
 
-// $tblLink->addButton("Back to Main Screen", "./index.html");
+$tblLink->addButton("Back to Main Screen", "./index.html");
 
 # actually show to the table
 $tblLink->showTable();

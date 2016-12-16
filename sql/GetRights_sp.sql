@@ -1,4 +1,4 @@
-
+use coral_licensing_prod;
 
 DROP PROCEDURE IF EXISTS coral_licensing_prod.GetRights;
 
