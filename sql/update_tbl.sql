@@ -45,7 +45,9 @@ select expressionTypeID  from ExpressionType where shortName = 'Classroom Print 
 -- call NotInCoral()
 
 
+use coral_api_prod;
 call GetRights("HIGHWIRE_PRESS_AMERICAN_DENTAL_EDUCATION_ASSOCIATION", "SFX")
+
 -- select * from Expression where documentID = 26 and expressionTypeID in (13, 3, 18, 14);
 call GetXLinks()
 call GetDuplicateXLinks();

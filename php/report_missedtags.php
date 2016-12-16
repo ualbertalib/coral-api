@@ -29,7 +29,7 @@ require_once("class.db.php");
 require_once('paginator.class.php');
 
 // connect to DB
-$db_connection='mysql:host=erms-dev.library.ualberta.ca;port=3306;dbname=coral_api_prod';
+$db_connection=$db_connection . 'dbname=coral_api_prod';
 $db = new db($db_connection, $db_user, $db_passwd);
 $db->setErrorCallbackFunction("echo");
 
@@ -59,8 +59,7 @@ if(isset($_GET['page']))
 
 
 // show report data
-echo "<h1 class='band'>SFX tags linked to more then one Coral record<br>";
-echo "This report should be empty, any record here indicated problem</h1>";
+echo "<h1 class='band'>SFX tags not linked to any Coral record</h1>";
 $t = new Table(true, "tableID");
 $t->setHeaderClass("headClass");
 $t->setBodyClass("bodyClass");
