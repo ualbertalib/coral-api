@@ -15,9 +15,9 @@ extensions:
 modules:
     config:
         Db:
-           dsn: 'mysql:host=erms-dev.library.ualberta.ca;dbname=coral_api_prod'
+           dsn: 'mysql:host=local.coral-api;dbname=coral_api_prod'
            user: 'root'
-           password: 'man0war'
+           password: 'Admin2015'
            populate: false
            cleanup: false
            reconnect: true
