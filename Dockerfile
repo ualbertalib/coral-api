@@ -1,3 +1,3 @@
-FROM coralbase
+FROM astrilet/coralbase
 COPY . /src
 WORKDIR /src
