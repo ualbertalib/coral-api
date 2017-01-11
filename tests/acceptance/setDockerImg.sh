@@ -12,3 +12,7 @@ mysql --user=root --password=Admin2015 < /src/tests/_data/coral_api_prod.sql
 cd /src/sql
 for x in $(ls *_sp.sql); do mysql --user=root --password=Admin2015 < $x; done;
 cp /src/tests/_envs/docker_credentials.php /src/php/credentials.php
+
+while true; do
+    sleep 1000
+done
