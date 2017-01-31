@@ -26,7 +26,7 @@ require_once("class.db.php");
 
 
 // connect to DB
-$db_connection=$db_connection . 'dbname=coral_licensing_prod';
+$db_connection=$db_connection . 'dbname=coral_api_prod';
 $db = new db($db_connection, $db_user, $db_passwd);
 $db->setErrorCallbackFunction("echo");
 
