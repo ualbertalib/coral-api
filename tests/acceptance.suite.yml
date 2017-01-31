@@ -8,7 +8,7 @@ class_name: AcceptanceTester
 modules:
     enabled:
         - PhpBrowser:
-            url: http://erms-dev.library.ualberta.ca/coralapi/
+            url: http://local.coral-api/
         - \Helper\Acceptance
         - Db:
- 
+
