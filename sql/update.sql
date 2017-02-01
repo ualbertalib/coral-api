@@ -1,3 +1,5 @@
+use coral_api_prod;
+
 update XloadLink, SFXTag set XloadLink.sfxID = SFXTag.sfxID  where SFXTag.SFXTag = XloadLink.SFXTag;
 update XloadLink, coral_licensing_prod.Document set XloadLink.documentID = coral_licensing_prod.Document.documentID where XloadLink.coralName = coral_licensing_prod.Document.shortName;
 
@@ -14,4 +16,4 @@ update XloadLink set comments = "SFX Tag is invalid and Coral Name not found in 
 -- update Link table
 delete from Link;
 insert into Link (documentID, sfxID)
-(select documentID, sfxID from XloadLink where comments = '');
+(select documentID, sfxID from XloadLink where comments = '' group by documentID, sfxID);

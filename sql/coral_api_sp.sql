@@ -88,7 +88,7 @@ BEGIN
           Link.sfxID = SFXTag.sfxID and
           Document.documentID =Link.documentID and
           Link.sfxID in (select sfxID from Link group by  sfxID having count(1) > 1)
-    ORDER BY FXTag.SFXTag;
+    ORDER BY SFXTag.SFXTag;
 END //
 
 
