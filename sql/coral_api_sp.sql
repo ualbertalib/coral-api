@@ -1,5 +1,14 @@
 use coral_api_prod;
 
+DROP PROCEDURE IF EXISTS coral_api_prod.GetMissedTags;
+CREATE PROCEDURE `GetMissedTags`()
+BEGIN
+
+    select SFXTag
+    FROM SFXTag
+    WHERE sfxID NOT in (select sfxID from Link);
+END;
+
 DROP PROCEDURE IF EXISTS GetSFXTargets;
 DELIMITER //
 CREATE  PROCEDURE `GetSFXTargets`()
