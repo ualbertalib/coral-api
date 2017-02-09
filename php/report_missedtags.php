@@ -2,7 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="report.css" type="text/css" />
-    <link rel="stylesheet" href="errors.css" type="text/css" />
+    <link rel="stylesheet" href="error.css" type="text/css" />
     <title>SFX Tags linked to more then one Coral Name - should be empty </title>
 </head>
 <body>

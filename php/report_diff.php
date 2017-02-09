@@ -2,7 +2,7 @@
 <html>
 <head>
     <link rel="stylesheet" href="report.css" type="text/css" />
-    <link rel="stylesheet" href="errors.css" type="text/css" />
+    <link rel="stylesheet" href="error.css" type="text/css" />
     <title>Reconciliation Report Coral vs OUR </title>
 </head>
 <body>
