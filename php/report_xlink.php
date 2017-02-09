@@ -11,7 +11,7 @@
 function getURL($text)
 {
     preg_match_all('!https?://\S+!', $text, $matches);
-    return $matches[0];
+    return $matches[0][0];
 }
 ?>
 
@@ -58,7 +58,7 @@ foreach($results as $value){
     $foundId = $value["documentID"];
     $ourRights = $value["OURLink"];
     $found = ($value["documentID"] != "") ? "Yes" : "No";
-    $vars = array(":ourLink" => getURL($ourRights)[0]);
+    $vars = array(":ourLink" => getURL($ourRights));
     $l = ($ourRights == "") ? "" : strtr($ourLink, $vars);
     $data[] = array($coralName, $found, $sfxTag, $l);
 
