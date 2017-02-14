@@ -11,7 +11,7 @@ BEGIN
     WHERE sfxID NOT in (select sfxID from Link);
 END //
 
-DROP PROCEDURE IF EXISTS GetSFXTargets;
+DROP PROCEDURE IF EXISTS GetSFXTargets //
 CREATE  PROCEDURE `GetSFXTargets`()
 BEGIN
 
@@ -25,7 +25,7 @@ BEGIN
 END //
 
 
-DROP PROCEDURE IF EXISTS GetXLinks;
+DROP PROCEDURE IF EXISTS GetXLinks //
 CREATE  PROCEDURE `GetXLinks`()
 BEGIN
 
@@ -40,7 +40,7 @@ BEGIN
 
 END //
 
-DROP PROCEDURE IF EXISTS GetDuplicateXLinks;
+DROP PROCEDURE IF EXISTS GetDuplicateXLinks //
 CREATE  PROCEDURE `GetDuplicateXLinks`()
 BEGIN
 
@@ -60,7 +60,7 @@ BEGIN
 
 END //
 
-DROP PROCEDURE IF EXISTS GetMissingXLinks;
+DROP PROCEDURE IF EXISTS GetMissingXLinks //
 CREATE  PROCEDURE `GetMissingXLinks`()
 BEGIN
 
@@ -75,7 +75,7 @@ BEGIN
 
 END //
 
-DROP PROCEDURE IF EXISTS NotInCoral;
+DROP PROCEDURE IF EXISTS NotInCoral //
 CREATE  PROCEDURE `NotInCoral`()
 BEGIN
         SELECT coralName,
@@ -89,7 +89,7 @@ BEGIN
 END //
 
 
-DROP PROCEDURE IF EXISTS GetDuplicateTags;
+DROP PROCEDURE IF EXISTS GetDuplicateTags //
 CREATE  PROCEDURE `GetDuplicateTags`()
 BEGIN
 
@@ -102,7 +102,7 @@ BEGIN
 END //
 
 
-DROP PROCEDURE IF EXISTS coral_api_prod.GetRights;
+DROP PROCEDURE IF EXISTS coral_api_prod.GetRights //
 CREATE  PROCEDURE `GetRights`(IN target varchar(256), IN targetType varchar(10))
 BEGIN
 

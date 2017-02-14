@@ -123,7 +123,6 @@ foreach($showResults as $value){
     $print = ($rightsRec["Print"] == '1') ? "yes" : "no";
     $printClass = ($rightsRec["Print"] == '1') ? "usage Yes" : "usage No";
 
-    $ourLink = $rightsRec["OURLink"];
     $vars = array(
         ":eClass" => $eClass,
         ":eClClass" => $eClassClass,
@@ -137,10 +136,15 @@ foreach($showResults as $value){
 
     $statement = "select max(OURLink) as OURLink from XloadLink where SFXTag = '$sfx_target' AND documentId is not null";
     $res = $db->run($statement);
-    $ourLink = $res[0]["OURLink"];
+    $ourRec = $res[0];
+    $ourLink = $ourRec["OURLink"];
+    $ourLink_sec = $ourLink;
+    if(strrpos($ourLink, "https") == false) {
+        $ourLink_sec = str_replace("http", "https", $ourLink);
+    }
 
     // $newvars = strtr($coralRights, $vars);
-    $data[] = array($sfx_target, $coralName, strtr($coralRights, $vars), $ourLink);
+    $data[] = array($sfx_target, $coralName, strtr($coralRights, $vars), $ourLink_sec);
 
 }
 
@@ -153,7 +157,7 @@ $t->setHeaderClass("headClass");
 $t->setBodyClass("bodyClass");
 $t->setFooterClass("footClass");
 $t->setColumnsWidth(array("35%", "25%", "20%", "20%"));
-$t->showTable($headers, $data);
+$t->showTable($headers, $data, 0, count($data));
 
 //echo'<pre/>';print_r( $pages->getPaginateData($_GET['page'], count($data)) );
 echo "<div class='band'>", $pages->displayHtmlPages($_GET['page'],count($results)), "</div>";
