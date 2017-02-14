@@ -2,6 +2,17 @@ use coral_api_prod;
 
 DELIMITER //
 
+DROP PROCEDURE IF EXISTS coral_api_prod.GetMissedTags //
+CREATE PROCEDURE `GetMissedTags`()
+BEGIN
+
+    select SFXTag
+    FROM SFXTag
+    WHERE sfxID NOT in (select sfxID from Link);
+END //
+
+DROP PROCEDURE IF EXISTS GetSFXTargets;
+
 DROP PROCEDURE IF EXISTS GetSFXTargets //
 CREATE  PROCEDURE `GetSFXTargets`()
 BEGIN
@@ -84,7 +95,7 @@ BEGIN
           Link.sfxID = SFXTag.sfxID and
           Document.documentID =Link.documentID and
           Link.sfxID in (select sfxID from Link group by  sfxID having count(1) > 1)
-    ORDER BY FXTag.SFXTag;
+    ORDER BY SFXTag.SFXTag;
 END //
 
 
